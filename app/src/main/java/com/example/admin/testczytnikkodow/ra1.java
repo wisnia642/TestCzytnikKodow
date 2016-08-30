@@ -27,7 +27,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ra extends ActionBarActivity {
+public class ra1 extends ActionBarActivity {
 
     Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16;
     TextView T1, T2;
@@ -106,9 +106,7 @@ public class ra extends ActionBarActivity {
 
     public void mpoup() {
 
-
-
-        //czas wyswietlania buzki
+        licznik=20;
         zm=6;
         final View popUpView = getLayoutInflater().inflate(R.layout.koniec, null);
         // inflating popup layout
@@ -127,19 +125,13 @@ public class ra extends ActionBarActivity {
         Button nowy = (Button) popUpView.findViewById(R.id.button30);
         Button koniec = (Button) popUpView.findViewById(R.id.button17);
 
-        if(licznik!=20) {
-            nowy.setEnabled(false);
-        }
-
+        nowy.setEnabled(false);
 
         nowy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ra.this, ra1.class);
-                i.putExtra("serca", serca);
-                i.putExtra("wynik", wynik);
-                i.putExtra("imie", imie);
-                startActivity(i);
+                mpopup.dismiss();
+                writesqlLight();
             }
         });
 
@@ -147,13 +139,10 @@ public class ra extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 writesqlLight();
-                Intent i = new Intent(ra.this, MainActivity.class);
+                Intent i = new Intent(ra1.this, MainActivity.class);
                 startActivity(i);
             }
         });
-
-        //liczy wyświetlone buźki ilość
-        licznik=25;
     }
 
 
@@ -171,31 +160,31 @@ public class ra extends ActionBarActivity {
         zm=0;
         switch (a) {
             case 0:
-                int id = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina0", null, null);
+                int id = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina14", null, null);
                 O1.setImageResource(id);
                 break;
             case 1:
-                int id1 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina1", null, null);
+                int id1 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina13", null, null);
                 O1.setImageResource(id1);
                 break;
             case 2:
-                int id2 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina2", null, null);
+                int id2 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina12", null, null);
                 O1.setImageResource(id2);
                 break;
             case 3:
-                int id3 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina3", null, null);
+                int id3 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina11", null, null);
                 O1.setImageResource(id3);
                 break;
             case 4:
-                int id4 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina4", null, null);
+                int id4 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina10", null, null);
                 O1.setImageResource(id4);
                 break;
             case 5:
-                int id5 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina5", null, null);
+                int id5 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina9", null, null);
                 O1.setImageResource(id5);
                 break;
             case 6:
-                int id6 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina6", null, null);
+                int id6 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina8", null, null);
                 O1.setImageResource(id6);
                 break;
             case 7:
@@ -203,31 +192,31 @@ public class ra extends ActionBarActivity {
                 O1.setImageResource(id7);
                 break;
             case 8:
-                int id8 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina8", null, null);
+                int id8 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina6", null, null);
                 O1.setImageResource(id8);
                 break;
             case 9:
-                int id9 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina9", null, null);
+                int id9 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina5", null, null);
                 O1.setImageResource(id9);
                 break;
             case 10:
-                int id10 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina10", null, null);
+                int id10 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina4", null, null);
                 O1.setImageResource(id10);
                 break;
             case 11:
-                int id11 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina11", null, null);
+                int id11 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina3", null, null);
                 O1.setImageResource(id11);
                 break;
             case 12:
-                int id12 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina12", null, null);
+                int id12 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina2", null, null);
                 O1.setImageResource(id12);
                 break;
             case 13:
-                int id13 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina13", null, null);
+                int id13 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina1", null, null);
                 O1.setImageResource(id13);
                 break;
             case 14:
-                int id14 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina14", null, null);
+                int id14 = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina0", null, null);
                 O1.setImageResource(id14);
                 break;
 
@@ -246,7 +235,7 @@ public class ra extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ra);
+        setContentView(R.layout.activity_ra1);
 
         B1 = (Button) findViewById(R.id.button);
         B2 = (Button) findViewById(R.id.button2);
@@ -282,6 +271,8 @@ public class ra extends ActionBarActivity {
         //Pobieranie imienia z wcześniejszego layotu
         applesData = getIntent().getExtras();
         imie = applesData.getString("imie");
+        serca = applesData.getInt("serca");
+        wynik = applesData.getInt("wynik");
 
 
         Timer timer = new Timer();
@@ -293,7 +284,7 @@ public class ra extends ActionBarActivity {
                     public void run() {
 
                         zm++;
-                        if(zm==5)
+                        if(zm==3)
                         {
                             generator();
                             wynik=wynik-10;
@@ -356,13 +347,12 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[0] = 0;
                 if (wartosc[b] == 0) {
-                    showToast(String.valueOf(wartosc[0]));
                     wartosc[0] = 2;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
                 } else {
-                    showToast("siema1");
+
                     wynik = wynik - 10;
                     serca++;
                     if (serca == 1) {

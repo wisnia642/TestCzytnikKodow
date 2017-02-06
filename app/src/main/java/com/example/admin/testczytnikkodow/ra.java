@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import java.util.TimerTask;
 
 public class ra extends ActionBarActivity {
 
-    Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16;
+    Button B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15;
     TextView T1, T2;
     ImageView O1;
     ImageView H1, H2, H3;
@@ -44,22 +45,17 @@ public class ra extends ActionBarActivity {
     int iClicks = 0;
     int minuty = 0;
     int godziny = 0;
-    int a = 0, serca = 0,zm=0;
+    int a = 0, serca = 0, zm = 0;
     int b = 0, c = 0;
     int przycisk = 0;
     int licznik = 0, wynik;
     String zero[] = new String[5];
-    String status = "", imie = "", czas1 = "";
+    String status = "", imie = "";
 
 
     //Dane do bazy danych
     private static final String SAMPLE_DB_NAME = "Wyniki";
     private static final String SAMPLE_TABLE_NAME = "Karta";
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(),
@@ -89,8 +85,8 @@ public class ra extends ActionBarActivity {
             int d = cal.get(Calendar.DAY_OF_MONTH);
             int m = cal.get(Calendar.MONTH);
             int r = cal.get(Calendar.YEAR);
-            status = d + "/" + m + "/" + r;
-
+            status = d + "/" + m+1 + "/" + r;
+            Log.i("blad",m+""+ status);
             SQLiteDatabase sampleDB = this.openOrCreateDatabase(SAMPLE_DB_NAME, MODE_PRIVATE, null);
 
             sampleDB.execSQL("INSERT INTO Wynik (Nazwa,Czas,Stan) VALUES " +
@@ -107,9 +103,8 @@ public class ra extends ActionBarActivity {
     public void mpoup() {
 
 
-
         //czas wyswietlania buzki
-        zm=6;
+        zm = 6;
         final View popUpView = getLayoutInflater().inflate(R.layout.koniec, null);
         // inflating popup layout
         mpopup = new PopupWindow(popUpView, ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -127,7 +122,7 @@ public class ra extends ActionBarActivity {
         Button nowy = (Button) popUpView.findViewById(R.id.button30);
         Button koniec = (Button) popUpView.findViewById(R.id.button17);
 
-        if(licznik!=20) {
+        if (licznik != 30) {
             nowy.setEnabled(false);
         }
 
@@ -153,7 +148,7 @@ public class ra extends ActionBarActivity {
         });
 
         //liczy wyświetlone buźki ilość
-        licznik=25;
+       // licznik = 5;
     }
 
 
@@ -168,7 +163,7 @@ public class ra extends ActionBarActivity {
         //   String.valueOf(a), Toast.LENGTH_LONG).show();
 
         //licznik do zmiany buźki
-        zm=0;
+        zm = 0;
         switch (a) {
             case 0:
                 int id = getResources().getIdentifier("com.example.admin.testczytnikkodow:drawable/mina0", null, null);
@@ -231,17 +226,16 @@ public class ra extends ActionBarActivity {
                 O1.setImageResource(id14);
                 break;
 
-
         }
 
     }
 
 
-    public void czas() {
-        System.out.println("Czas zeskanowania wszystkich kodów:" + (stop - start));
-        czas = Double.valueOf(stop - start);
-        showToast("Twój czas to: " + String.valueOf(stop - start) + "sekund");
-    }
+ //     public void czas() {
+   //   System.out.println("Czas zeskanowania wszystkich kodów:" + (stop - start));
+   //   czas = Double.valueOf(stop - start);
+    //  showToast("Twój czas to: " + String.valueOf(stop - start) + "sekund");
+    //   }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -284,6 +278,7 @@ public class ra extends ActionBarActivity {
         imie = applesData.getString("imie");
 
 
+
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -293,18 +288,27 @@ public class ra extends ActionBarActivity {
                     public void run() {
 
                         zm++;
-                        if(zm==5)
-                        {
+                        if (zm == 4) {
                             generator();
-                            wynik=wynik-10;
+                            wynik = wynik - 10;
                             licznik++;
+
+                            if ( wynik == -100) {
+                                // licznik = 30; -- nie wiem do czego to służy :p
+                                mpoup();
+                            }
                         }
+
                         T2.setText(String.valueOf(wynik));
                         c = wynik;
+
                         if (licznik < 19) {
                             iClicks = iClicks + 1;
                             T1.setText(String.valueOf(zero[0] + godziny + ":" + zero[1] + minuty + ":" + zero[2] + iClicks));
                         }
+
+
+
                         if (iClicks == 9) {
                             zero[2] = "";
                         }
@@ -351,18 +355,19 @@ public class ra extends ActionBarActivity {
         //wywoływanie kolejnych liczb losowych
         generator();
 
+
         B1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wartosc[0] = 0;
-                if (wartosc[b] == 0) {
-                    showToast(String.valueOf(wartosc[0]));
+                wartosc[0] = 5;
+                if (wartosc[b] == 5) {
+                    //  showToast(String.valueOf(wartosc[0]));
                     wartosc[0] = 2;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
                 } else {
-                    showToast("siema1");
+                    //showToast("siema1");
                     wynik = wynik - 10;
                     serca++;
                     if (serca == 1) {
@@ -403,7 +408,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[1] = 1;
                 if (wartosc[b] == 1) {
-                    wartosc[1] = 3;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -450,7 +454,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[2] = 2;
                 if (wartosc[b] == 2) {
-                    wartosc[2] = 3;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -495,7 +498,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[3] = 3;
                 if (wartosc[b] == 3) {
-                    wartosc[3] = 4;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -540,7 +542,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[4] = 4;
                 if (wartosc[b] == 4) {
-                    wartosc[4] = 5;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -585,7 +586,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[5] = 5;
                 if (wartosc[b] == 5) {
-                    wartosc[5] = 6;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -630,7 +630,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[6] = 6;
                 if (wartosc[b] == 6) {
-                    wartosc[6] = 7;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -675,7 +674,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[7] = 7;
                 if (wartosc[b] == 7) {
-                    wartosc[7] = 8;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -720,7 +718,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[8] = 8;
                 if (wartosc[b] == 8) {
-                    wartosc[8] = 9;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -765,7 +762,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[9] = 9;
                 if (wartosc[b] == 9) {
-                    wartosc[9] = 10;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -810,7 +806,6 @@ public class ra extends ActionBarActivity {
             public void onClick(View view) {
                 wartosc[10] = 10;
                 if (wartosc[b] == 10) {
-                    wartosc[10] = 11;
                     generator();
                     licznik++;
                     wynik = wynik + 10;
@@ -1026,50 +1021,7 @@ public class ra extends ActionBarActivity {
 
             }
         });
-
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ra Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.admin.testczytnikkodow/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "ra Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://com.example.admin.testczytnikkodow/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 }
+
+

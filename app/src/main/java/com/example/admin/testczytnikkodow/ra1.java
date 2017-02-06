@@ -286,9 +286,10 @@ public class ra1 extends ActionBarActivity {
                         zm++;
                         if(zm==3)
                         {
-                            generator();
                             wynik=wynik-10;
                             licznik++;
+                            generator();
+
                         }
                         T2.setText(String.valueOf(wynik));
                         c = wynik;
@@ -296,6 +297,7 @@ public class ra1 extends ActionBarActivity {
                             iClicks = iClicks + 1;
                             T1.setText(String.valueOf(zero[0] + godziny + ":" + zero[1] + minuty + ":" + zero[2] + iClicks));
                         }
+
                         if (iClicks == 9) {
                             zero[2] = "";
                         }

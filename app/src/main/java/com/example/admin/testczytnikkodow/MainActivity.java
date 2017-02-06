@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +31,7 @@ import java.util.Random;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     //UI instance variables
-    private Button scanBtn;
+    private Button scanBtn,cleanBtn;
     private TextView  numer;
     private EditText Imie;
     private ListView lista;
@@ -42,7 +43,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     String[] tab1 = new String[100];
     String[] tab2 = new String[100];
     String[] tab3 = new String[100];
-    String[] tab4 = new String[100];
+    //String[] tab4 = new String[100];
 
 
 
@@ -78,6 +79,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
+    private void cleansqlLight()
+    {
+        try {
+            SQLiteDatabase sampleDB = this.openOrCreateDatabase(SAMPLE_DB_NAME,MODE_PRIVATE,null);
+            sampleDB.execSQL("Delete from Wynik ");
+            sampleDB.close();
+
+        }catch (Exception e)
+        {
+            showToast("Błąd przy czyszczeniu listy wyników" +e);
+        }
+    }
+
 
     private void ToDataBase() {
         try {
@@ -88,7 +102,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         } catch (Exception e) {
             showToast("błąd połączenia");
         }
-
     }
 
 
@@ -97,16 +110,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         //instantiate UI items
         scanBtn = (Button)findViewById(R.id.scan_button);
+        cleanBtn = (Button)findViewById(R.id.button16);
         numer = (TextView) findViewById(R.id.textView);
         Imie = (EditText) findViewById(R.id.editText);
         lista = (ListView) findViewById(R.id.listView);
 
         //listen for clicks
         scanBtn.setOnClickListener(this);
+
+        cleanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                cleansqlLight();
+            }
+        });
 
         ToDataBase();
         readsqlLight();
@@ -126,9 +146,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-
     public void onClick(View v){
 
+        try{
         //Uruchamianie aplikacji skaner
         imie = Imie.getText().toString();
         if(imie!=null & !imie.equals("Podaj swoje imię")) {
@@ -138,7 +158,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             startActivity(i);
 
 
-            /*
+            /* funkcjonalność wyłączona skanera
             //włącznie skanera
             if (v.getId() == R.id.scan_button) {
                 //instantiate ZXing integration class
@@ -146,15 +166,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 //start scanning
                 scanIntegrator.initiateScan();
             }*/
+            Log.i("Nowy",imie);
         }else
         {
             showToast("Wpisz swoje imię");
+        }}catch (Exception e)
+        {
+            Log.i("Nowy",""+e);
+
         }
 
-
-
     }
-/*
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         start=System.currentTimeMillis();
         //retrieve result of scanning - instantiate ZXing object
@@ -184,7 +207,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             System.out.println("Czas zeskanowania wszystkich kodów:"+(stop-start));
             czas = Double.valueOf(stop-start);
             status = d+"/"+m+"/"+r;
-            writesqlLight();
+
+           // writesqlLight();
+
             showToast("Twój czas to: "+String.valueOf(stop-start));
 
             //długie obliczenia
@@ -324,6 +349,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     "No scan data received!", Toast.LENGTH_SHORT);
             toast.show();
         }
-    }*/
+    }
 
 }

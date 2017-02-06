@@ -25,7 +25,7 @@
         android:layout_below="@+id/textView6"
         android:layout_toLeftOf="@+id/textView6"
         android:layout_toStartOf="@+id/textView6"
-        android:background="@drawable/mina0" />
+        android:background="@drawable/mina14" />
 
     <Button
         android:layout_width="60dp"
@@ -33,7 +33,7 @@
         android:id="@+id/button2"
         android:layout_alignTop="@+id/button"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/mina1" />
+        android:background="@drawable/mina13" />
 
     <Button
         android:layout_width="60dp"
@@ -42,7 +42,7 @@
         android:layout_alignTop="@+id/button2"
         android:layout_toRightOf="@+id/textView6"
         android:layout_toEndOf="@+id/textView6"
-        android:background="@drawable/mina2" />
+        android:background="@drawable/mina12" />
 
     <Button
         android:layout_width="60dp"
@@ -51,7 +51,7 @@
         android:layout_below="@+id/button"
         android:layout_toLeftOf="@+id/textView6"
         android:layout_toStartOf="@+id/textView6"
-        android:background="@drawable/mina3" />
+        android:background="@drawable/mina11" />
 
     <Button
         android:layout_width="60dp"
@@ -60,7 +60,7 @@
         android:layout_below="@+id/button4"
         android:layout_toLeftOf="@+id/textView6"
         android:layout_toStartOf="@+id/textView6"
-        android:background="@drawable/mina6" />
+        android:background="@drawable/mina8" />
 
     <Button
         android:layout_width="60dp"
@@ -69,7 +69,7 @@
         android:layout_below="@+id/button5"
         android:layout_alignLeft="@+id/button5"
         android:layout_alignStart="@+id/button5"
-        android:background="@drawable/mina9" />
+        android:background="@drawable/mina5" />
 
     <Button
         android:layout_width="60dp"
@@ -78,7 +78,7 @@
         android:layout_below="@+id/button6"
         android:layout_alignLeft="@+id/button6"
         android:layout_alignStart="@+id/button6"
-        android:background="@drawable/mina12" />
+        android:background="@drawable/mina2" />
 
     <Button
         android:layout_width="60dp"
@@ -87,7 +87,7 @@
         android:layout_alignBottom="@+id/button4"
         android:layout_alignRight="@+id/button2"
         android:layout_alignEnd="@+id/button2"
-        android:background="@drawable/mina4" />
+        android:background="@drawable/mina10" />
 
     <Button
         android:layout_width="60dp"
@@ -102,7 +102,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/button10"
-        android:background="@drawable/mina13"
+        android:background="@drawable/mina1"
         android:layout_alignTop="@+id/button7"
         android:layout_alignLeft="@+id/button11"
         android:layout_alignStart="@+id/button11" />
@@ -111,7 +111,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/button11"
-        android:background="@drawable/mina10"
+        android:background="@drawable/mina4"
         android:layout_above="@+id/button7"
         android:layout_alignLeft="@+id/button9"
         android:layout_alignStart="@+id/button9" />
@@ -123,7 +123,7 @@
         android:layout_above="@+id/button9"
         android:layout_alignLeft="@+id/button3"
         android:layout_alignStart="@+id/button3"
-        android:background="@drawable/mina5" />
+        android:background="@drawable/mina9" />
 
     <Button
         android:layout_width="60dp"
@@ -132,7 +132,7 @@
         android:layout_alignTop="@+id/button9"
         android:layout_alignRight="@+id/button12"
         android:layout_alignEnd="@+id/button12"
-        android:background="@drawable/mina8" />
+        android:background="@drawable/mina6" />
 
     <Button
         android:layout_width="60dp"
@@ -141,7 +141,7 @@
         android:layout_below="@+id/button9"
         android:layout_alignRight="@+id/button13"
         android:layout_alignEnd="@+id/button13"
-        android:background="@drawable/mina11" />
+        android:background="@drawable/mina3" />
 
     <Button
         android:layout_width="60dp"
@@ -150,7 +150,7 @@
         android:layout_alignBottom="@+id/button10"
         android:layout_alignRight="@+id/button14"
         android:layout_alignEnd="@+id/button14"
-        android:background="@drawable/mina14" />
+        android:background="@drawable/mina0" />
 
     <ImageView
         android:layout_width="60dp"
@@ -199,50 +199,48 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView14"
-        android:textSize="20dp"
-        android:text="Poziom 2"
-        android:textColor="@android:color/primary_text_light"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignLeft="@+id/button15"
-        android:layout_alignStart="@+id/button15"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="17dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Życie"
-        android:id="@+id/textView15"
-        android:textColor="@android:color/holo_purple"
-        android:layout_above="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton"
-        android:layout_toEndOf="@+id/imageButton" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Czas"
-        android:id="@+id/textView16"
-        android:textColor="@android:color/holo_blue_dark"
+        android:id="@+id/textView11"
         android:layout_above="@+id/imageButton3"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/holo_blue_dark" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Punkty"
-        android:id="@+id/textView17"
-        android:textColor="@android:color/holo_orange_dark"
-        android:layout_above="@+id/textView10"
-        android:layout_alignLeft="@+id/textView14"
-        android:layout_alignStart="@+id/textView14"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp" />
+        android:id="@+id/textView12"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@android:color/holo_orange_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Życie"
+        android:id="@+id/textView13"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageButton"
+        android:layout_toEndOf="@+id/imageButton"
+        android:textColor="@android:color/holo_purple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView14"
+        android:textSize="20dp"
+        android:text="Poziom 2"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignRight="@+id/textView12"
+        android:layout_alignEnd="@+id/textView12"
+        android:layout_marginBottom="15dp"
+        android:textColor="@android:color/primary_text_light" />
 
 </RelativeLayout>
